@@ -2998,10 +2998,11 @@ unsigned char allBits;
 
 unsigned char massageState = 0;
 unsigned char heatState = 0;
+unsigned long heatPwmCount = 0;
 unsigned char outputPwmCount = 0;
 unsigned char LedPwmCount = 0;
 unsigned char massageIntensity;
-unsigned char heatIntensity;
+unsigned long heatIntensity;
 unsigned char massageLedIntensity;
 unsigned char heatLedIntensity;
 
@@ -3366,11 +3367,11 @@ Key_LED.oneBit.Heat = 0;
 }
 switch (heatState){
 case 1:
-heatIntensity = 6*20/10;
+heatIntensity = 6*(20/10);
 heatLedIntensity = 20;
 break;
 case 2:
-heatIntensity = 3*20/10;
+heatIntensity = 3*(20/10);
 heatLedIntensity = 3*20/10;
 break;
 default:
@@ -3385,8 +3386,8 @@ flag_heat = 0;
 if (Key_state.oneBit.Massage){
 if (!flag_massage){
 flag_massage = 1;
-Key_LED.oneBit.Massage = 1;
 massageTimer = 20*60;
+Key_LED.oneBit.Massage = 1;
 massageState++;
 if (massageState >= 4){
 massageState = 0;
@@ -3431,6 +3432,11 @@ Key_LED.oneBit.PROpen = Key_LED.oneBit.PRClose = flag_pr_open = flag_pr_close = 
 
 void IchOutputs(void){
 
+heatPwmCount++;
+if(heatPwmCount >= 20){
+heatPwmCount = 0;
+}
+
 outputPwmCount++;
 if (outputPwmCount >= 20){
 outputPwmCount = 0;
@@ -3446,7 +3452,7 @@ LATC1 = 0;
 
 
 
-if(Key_LED.oneBit.Heat && !(LATA7 || LATA6) && (outputPwmCount <= heatIntensity)){
+if(Key_LED.oneBit.Heat && !(LATA7 || LATA6) && (heatPwmCount <= heatIntensity)){
 LATC0 = 1;
 }else{
 LATC0 = 0;

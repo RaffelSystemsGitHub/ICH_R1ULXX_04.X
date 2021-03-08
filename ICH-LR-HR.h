@@ -20,8 +20,8 @@
 #define		PWM_PERIOD          20
 #define		LED_ON              1
 #define		LED_OFF				0
-#define     HEAT_HIGH           6*PWM_PERIOD/10
-#define     HEAT_LOW            3*PWM_PERIOD/10
+#define     HEAT_HIGH           6*(PWM_PERIOD/10)
+#define     HEAT_LOW            3*(PWM_PERIOD/10)
 #define     HEAT_LED_HIGH       PWM_PERIOD
 #define     HEAT_LED_LOW        3*PWM_PERIOD/10
 #define     MASSAGE_LED_HIGH    PWM_PERIOD
@@ -64,10 +64,11 @@ union {
 
 unsigned char massageState = 0;
 unsigned char heatState = 0;
+unsigned long heatPwmCount = 0;
 unsigned char outputPwmCount = 0;
 unsigned char LedPwmCount = 0;
 unsigned char massageIntensity;
-unsigned char heatIntensity;
+unsigned long heatIntensity;
 unsigned char massageLedIntensity;
 unsigned char heatLedIntensity;
 

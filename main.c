@@ -237,6 +237,8 @@ void interrupt ISR(void)
         if(secondTimer){
             secondTimer--;
         }else{
+
+            
             secondTimer = ONE_SECOND;
             
             if(ledTimer){
@@ -248,16 +250,14 @@ void interrupt ISR(void)
             
             if(heatTimer){
                 heatTimer--;
-                if(!heatTimer){
-                    heatState = Key_LED.oneBit.Heat = 0;
-                }
+            }else{
+                heatState = Key_LED.oneBit.Heat = 0;
             }
 
             if(massageTimer){
                 massageTimer--;
-                if(!massageTimer){
-                    massageState = Key_LED.oneBit.Massage = 0;
-                }
+            }else{
+                massageState = Key_LED.oneBit.Massage = 0;
             }
             
             if(lightTimer){

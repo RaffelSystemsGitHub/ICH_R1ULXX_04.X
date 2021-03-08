@@ -3287,10 +3287,11 @@ unsigned char allBits;
 
 unsigned char massageState = 0;
 unsigned char heatState = 0;
+unsigned long heatPwmCount = 0;
 unsigned char outputPwmCount = 0;
 unsigned char LedPwmCount = 0;
 unsigned char massageIntensity;
-unsigned char heatIntensity;
+unsigned long heatIntensity;
 unsigned char massageLedIntensity;
 unsigned char heatLedIntensity;
 
@@ -3430,6 +3431,8 @@ prCloseDelay--;
 if(secondTimer){
 secondTimer--;
 }else{
+
+
 secondTimer = 10050;
 
 if(ledTimer){
@@ -3441,17 +3444,18 @@ led_enable = 0;
 
 if(heatTimer){
 heatTimer--;
-if(!heatTimer){
+}else{
 heatState = Key_LED.oneBit.Heat = 0;
-}
 }
 
 if(massageTimer){
 massageTimer--;
-if(!massageTimer){
+}else{
 massageState = Key_LED.oneBit.Massage = 0;
 }
-}
+
+
+
 
 if(lightTimer){
 lightTimer--;
@@ -3460,14 +3464,14 @@ Key_LED.oneBit.Light = 0;
 }
 }
 
-# 303
+# 306
 if ((TMR0IF && TMR0IE))
 {
 mTouch_Scan();
 
 }
 
-# 314
+# 317
 T0IF = 0;
 }
 

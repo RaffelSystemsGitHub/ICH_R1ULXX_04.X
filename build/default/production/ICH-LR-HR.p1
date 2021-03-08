@@ -2298,44 +2298,46 @@ Version 3.2 HI-TECH Software Intermediate Code
 "66 ICH-LR-HR.h
 [v _heatState `uc  1 e ]
 "67 ICH-LR-HR.h
-[v _outputPwmCount `uc  1 e ]
+[v _heatPwmCount `ul  1 e ]
 "68 ICH-LR-HR.h
-[v _LedPwmCount `uc  1 e ]
+[v _outputPwmCount `uc  1 e ]
 "69 ICH-LR-HR.h
-[v _massageIntensity `uc  1 e ]
+[v _LedPwmCount `uc  1 e ]
 "70 ICH-LR-HR.h
-[v _heatIntensity `uc  1 e ]
+[v _massageIntensity `uc  1 e ]
 "71 ICH-LR-HR.h
-[v _massageLedIntensity `uc  1 e ]
+[v _heatIntensity `ul  1 e ]
 "72 ICH-LR-HR.h
+[v _massageLedIntensity `uc  1 e ]
+"73 ICH-LR-HR.h
 [v _heatLedIntensity `uc  1 e ]
-"74 ICH-LR-HR.h
-[v _massageTimer `ui  1 e ]
 "75 ICH-LR-HR.h
-[v _heatTimer `ui  1 e ]
+[v _massageTimer `ui  1 e ]
 "76 ICH-LR-HR.h
-[v _secondTimer `ui  1 e ]
+[v _heatTimer `ui  1 e ]
 "77 ICH-LR-HR.h
-[v _lightTimer `ui  1 e ]
+[v _secondTimer `ui  1 e ]
 "78 ICH-LR-HR.h
-[v _prOpenDelay `ui  1 e ]
+[v _lightTimer `ui  1 e ]
 "79 ICH-LR-HR.h
-[v _prCloseDelay `ui  1 e ]
+[v _prOpenDelay `ui  1 e ]
 "80 ICH-LR-HR.h
+[v _prCloseDelay `ui  1 e ]
+"81 ICH-LR-HR.h
 [v _ledTimer `ui  1 e ]
-"82 ICH-LR-HR.h
-[v _flag_pr_open `b  1 e ]
 "83 ICH-LR-HR.h
-[v _flag_pr_close `b  1 e ]
+[v _flag_pr_open `b  1 e ]
 "84 ICH-LR-HR.h
-[v _flag_massage `b  1 e ]
+[v _flag_pr_close `b  1 e ]
 "85 ICH-LR-HR.h
-[v _flag_heat `b  1 e ]
+[v _flag_massage `b  1 e ]
 "86 ICH-LR-HR.h
-[v _flag_light `b  1 e ]
+[v _flag_heat `b  1 e ]
 "87 ICH-LR-HR.h
-[v _led_enable `b  1 e ]
+[v _flag_light `b  1 e ]
 "88 ICH-LR-HR.h
+[v _led_enable `b  1 e ]
+"89 ICH-LR-HR.h
 [v _flag_led_enable `b  1 e ]
 [; ;pic16f1933.h: 141: volatile unsigned char INDF0 @ 0x000;
 [; ;pic16f1933.h: 145: volatile unsigned char INDF1 @ 0x001;
@@ -4418,36 +4420,41 @@ Version 3.2 HI-TECH Software Intermediate Code
 ]
 [; ;ICH-LR-HR.h: 66: unsigned char heatState = 0;
 "67
+[i _heatPwmCount
+-> -> -> 0 `i `l `ul
+]
+[; ;ICH-LR-HR.h: 67: unsigned long heatPwmCount = 0;
+"68
 [i _outputPwmCount
 -> -> 0 `i `uc
 ]
-[; ;ICH-LR-HR.h: 67: unsigned char outputPwmCount = 0;
-"68
+[; ;ICH-LR-HR.h: 68: unsigned char outputPwmCount = 0;
+"69
 [i _LedPwmCount
 -> -> 0 `i `uc
 ]
-[; ;ICH-LR-HR.h: 68: unsigned char LedPwmCount = 0;
-[; ;ICH-LR-HR.h: 69: unsigned char massageIntensity;
-[; ;ICH-LR-HR.h: 70: unsigned char heatIntensity;
-[; ;ICH-LR-HR.h: 71: unsigned char massageLedIntensity;
-[; ;ICH-LR-HR.h: 72: unsigned char heatLedIntensity;
-[; ;ICH-LR-HR.h: 74: unsigned int massageTimer;
-[; ;ICH-LR-HR.h: 75: unsigned int heatTimer;
-[; ;ICH-LR-HR.h: 76: unsigned int secondTimer;
-[; ;ICH-LR-HR.h: 77: unsigned int lightTimer;
-[; ;ICH-LR-HR.h: 78: unsigned int prOpenDelay;
-[; ;ICH-LR-HR.h: 79: unsigned int prCloseDelay;
-[; ;ICH-LR-HR.h: 80: unsigned int ledTimer;
-[; ;ICH-LR-HR.h: 82: bit flag_pr_open;
-[; ;ICH-LR-HR.h: 83: bit flag_pr_close;
-[; ;ICH-LR-HR.h: 84: bit flag_massage;
-[; ;ICH-LR-HR.h: 85: bit flag_heat;
-[; ;ICH-LR-HR.h: 86: bit flag_light;
-[; ;ICH-LR-HR.h: 87: bit led_enable;
-[; ;ICH-LR-HR.h: 88: bit flag_led_enable;
-[; ;ICH-LR-HR.h: 92: void KeyExecute(void);
-[; ;ICH-LR-HR.h: 93: void IchOutputs(void);
-[; ;ICH-LR-HR.h: 94: void IchLeds(void);
+[; ;ICH-LR-HR.h: 69: unsigned char LedPwmCount = 0;
+[; ;ICH-LR-HR.h: 70: unsigned char massageIntensity;
+[; ;ICH-LR-HR.h: 71: unsigned long heatIntensity;
+[; ;ICH-LR-HR.h: 72: unsigned char massageLedIntensity;
+[; ;ICH-LR-HR.h: 73: unsigned char heatLedIntensity;
+[; ;ICH-LR-HR.h: 75: unsigned int massageTimer;
+[; ;ICH-LR-HR.h: 76: unsigned int heatTimer;
+[; ;ICH-LR-HR.h: 77: unsigned int secondTimer;
+[; ;ICH-LR-HR.h: 78: unsigned int lightTimer;
+[; ;ICH-LR-HR.h: 79: unsigned int prOpenDelay;
+[; ;ICH-LR-HR.h: 80: unsigned int prCloseDelay;
+[; ;ICH-LR-HR.h: 81: unsigned int ledTimer;
+[; ;ICH-LR-HR.h: 83: bit flag_pr_open;
+[; ;ICH-LR-HR.h: 84: bit flag_pr_close;
+[; ;ICH-LR-HR.h: 85: bit flag_massage;
+[; ;ICH-LR-HR.h: 86: bit flag_heat;
+[; ;ICH-LR-HR.h: 87: bit flag_light;
+[; ;ICH-LR-HR.h: 88: bit led_enable;
+[; ;ICH-LR-HR.h: 89: bit flag_led_enable;
+[; ;ICH-LR-HR.h: 93: void KeyExecute(void);
+[; ;ICH-LR-HR.h: 94: void IchOutputs(void);
+[; ;ICH-LR-HR.h: 95: void IchLeds(void);
 [; ;stdint.h: 13: typedef signed char int8_t;
 [; ;stdint.h: 20: typedef signed int int16_t;
 [; ;stdint.h: 27: typedef signed short long int int24_t;
@@ -4764,9 +4771,9 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;ICH-LR-HR.C: 69: case 1:
 "69
 [e :U 274 ]
-[; ;ICH-LR-HR.C: 70: heatIntensity = 6*20/10;
+[; ;ICH-LR-HR.C: 70: heatIntensity = 6*(20/10);
 "70
-[e = _heatIntensity -> / * -> 6 `i -> 20 `i -> 10 `i `uc ]
+[e = _heatIntensity -> -> * -> 6 `i / -> 20 `i -> 10 `i `l `ul ]
 [; ;ICH-LR-HR.C: 71: heatLedIntensity = 20;
 "71
 [e = _heatLedIntensity -> -> 20 `i `uc ]
@@ -4776,9 +4783,9 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;ICH-LR-HR.C: 73: case 2:
 "73
 [e :U 275 ]
-[; ;ICH-LR-HR.C: 74: heatIntensity = 3*20/10;
+[; ;ICH-LR-HR.C: 74: heatIntensity = 3*(20/10);
 "74
-[e = _heatIntensity -> / * -> 3 `i -> 20 `i -> 10 `i `uc ]
+[e = _heatIntensity -> -> * -> 3 `i / -> 20 `i -> 10 `i `l `ul ]
 [; ;ICH-LR-HR.C: 75: heatLedIntensity = 3*20/10;
 "75
 [e = _heatLedIntensity -> / * -> 3 `i -> 20 `i -> 10 `i `uc ]
@@ -4830,12 +4837,12 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;ICH-LR-HR.C: 88: flag_massage = 1;
 "88
 [e = _flag_massage -> -> 1 `i `b ]
-[; ;ICH-LR-HR.C: 89: Key_LED.oneBit.Massage = 1;
+[; ;ICH-LR-HR.C: 89: massageTimer = 20*60;
 "89
-[e = . . _Key_LED 0 3 -> -> 1 `i `uc ]
-[; ;ICH-LR-HR.C: 90: massageTimer = 20*60;
-"90
 [e = _massageTimer -> * -> 20 `i -> 60 `i `ui ]
+[; ;ICH-LR-HR.C: 90: Key_LED.oneBit.Massage = 1;
+"90
+[e = . . _Key_LED 0 3 -> -> 1 `i `uc ]
 [; ;ICH-LR-HR.C: 91: massageState++;
 "91
 [e ++ _massageState -> -> 1 `i `uc ]
@@ -4989,267 +4996,281 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;ICH-LR-HR.C: 133: void IchOutputs(void){
 [e :U _IchOutputs ]
 [f ]
-[; ;ICH-LR-HR.C: 135: outputPwmCount++;
+[; ;ICH-LR-HR.C: 135: heatPwmCount++;
 "135
-[e ++ _outputPwmCount -> -> 1 `i `uc ]
-[; ;ICH-LR-HR.C: 136: if (outputPwmCount >= 20){
+[e ++ _heatPwmCount -> -> -> 1 `i `l `ul ]
+[; ;ICH-LR-HR.C: 136: if(heatPwmCount >= 20){
 "136
-[e $ ! >= -> _outputPwmCount `i -> 20 `i 293  ]
+[e $ ! >= _heatPwmCount -> -> -> 20 `i `l `ul 293  ]
 {
-[; ;ICH-LR-HR.C: 137: outputPwmCount = 0;
+[; ;ICH-LR-HR.C: 137: heatPwmCount = 0;
 "137
-[e = _outputPwmCount -> -> 0 `i `uc ]
+[e = _heatPwmCount -> -> -> 0 `i `l `ul ]
 "138
 }
 [e :U 293 ]
 [; ;ICH-LR-HR.C: 138: }
-[; ;ICH-LR-HR.C: 142: if(Key_LED.oneBit.Massage && (outputPwmCount <= massageIntensity)){
+[; ;ICH-LR-HR.C: 140: outputPwmCount++;
+"140
+[e ++ _outputPwmCount -> -> 1 `i `uc ]
+[; ;ICH-LR-HR.C: 141: if (outputPwmCount >= 20){
+"141
+[e $ ! >= -> _outputPwmCount `i -> 20 `i 294  ]
+{
+[; ;ICH-LR-HR.C: 142: outputPwmCount = 0;
 "142
-[e $ ! && != -> . . _Key_LED 0 3 `i -> -> -> 0 `i `uc `i <= -> _outputPwmCount `i -> _massageIntensity `i 294  ]
-{
-[; ;ICH-LR-HR.C: 143: LATC1 = 1;
+[e = _outputPwmCount -> -> 0 `i `uc ]
 "143
-[e = _LATC1 -> -> 1 `i `b ]
-"144
 }
-[; ;ICH-LR-HR.C: 144: }else{
-[e $U 295  ]
 [e :U 294 ]
+[; ;ICH-LR-HR.C: 143: }
+[; ;ICH-LR-HR.C: 147: if(Key_LED.oneBit.Massage && (outputPwmCount <= massageIntensity)){
+"147
+[e $ ! && != -> . . _Key_LED 0 3 `i -> -> -> 0 `i `uc `i <= -> _outputPwmCount `i -> _massageIntensity `i 295  ]
 {
-[; ;ICH-LR-HR.C: 145: LATC1 = 0;
-"145
-[e = _LATC1 -> -> 0 `i `b ]
-"146
+[; ;ICH-LR-HR.C: 148: LATC1 = 1;
+"148
+[e = _LATC1 -> -> 1 `i `b ]
+"149
 }
+[; ;ICH-LR-HR.C: 149: }else{
+[e $U 296  ]
 [e :U 295 ]
-[; ;ICH-LR-HR.C: 146: }
-[; ;ICH-LR-HR.C: 150: if(Key_LED.oneBit.Heat && !(LATA7 || LATA6) && (outputPwmCount <= heatIntensity)){
+{
+[; ;ICH-LR-HR.C: 150: LATC1 = 0;
 "150
-[e $ ! && && != -> . . _Key_LED 0 2 `i -> -> -> 0 `i `uc `i ! || _LATA7 _LATA6 <= -> _outputPwmCount `i -> _heatIntensity `i 296  ]
-{
-[; ;ICH-LR-HR.C: 151: LATC0 = 1;
+[e = _LATC1 -> -> 0 `i `b ]
 "151
-[e = _LATC0 -> -> 1 `i `b ]
-"152
 }
-[; ;ICH-LR-HR.C: 152: }else{
-[e $U 297  ]
 [e :U 296 ]
+[; ;ICH-LR-HR.C: 151: }
+[; ;ICH-LR-HR.C: 155: if(Key_LED.oneBit.Heat && !(LATA7 || LATA6) && (heatPwmCount <= heatIntensity)){
+"155
+[e $ ! && && != -> . . _Key_LED 0 2 `i -> -> -> 0 `i `uc `i ! || _LATA7 _LATA6 <= _heatPwmCount _heatIntensity 297  ]
 {
-[; ;ICH-LR-HR.C: 153: LATC0 = 0;
-"153
-[e = _LATC0 -> -> 0 `i `b ]
-"154
-}
-[e :U 297 ]
-[; ;ICH-LR-HR.C: 154: }
-[; ;ICH-LR-HR.C: 157: if (Key_LED.oneBit.PROpen){
+[; ;ICH-LR-HR.C: 156: LATC0 = 1;
+"156
+[e = _LATC0 -> -> 1 `i `b ]
 "157
-[e $ ! != -> . . _Key_LED 0 0 `i -> -> -> 0 `i `uc `i 298  ]
+}
+[; ;ICH-LR-HR.C: 157: }else{
+[e $U 298  ]
+[e :U 297 ]
 {
-[; ;ICH-LR-HR.C: 158: LATA6 = 0;
+[; ;ICH-LR-HR.C: 158: LATC0 = 0;
 "158
-[e = _LATA6 -> -> 0 `i `b ]
-[; ;ICH-LR-HR.C: 159: if(!prOpenDelay){
+[e = _LATC0 -> -> 0 `i `b ]
 "159
-[e $ ! ! != _prOpenDelay -> -> 0 `i `ui 299  ]
-{
-[; ;ICH-LR-HR.C: 160: LATA7 = 1;
-"160
-[e = _LATA7 -> -> 1 `i `b ]
-[; ;ICH-LR-HR.C: 161: prCloseDelay = 10050/8;
-"161
-[e = _prCloseDelay -> / -> 10050 `i -> 8 `i `ui ]
-"162
 }
-[; ;ICH-LR-HR.C: 162: }else{
-[e $U 300  ]
-[e :U 299 ]
-{
-[; ;ICH-LR-HR.C: 163: LATA7 = 0;
-"163
-[e = _LATA7 -> -> 0 `i `b ]
-"164
-}
-[e :U 300 ]
-"165
-}
-[; ;ICH-LR-HR.C: 164: }
-[; ;ICH-LR-HR.C: 165: }else{
-[e $U 301  ]
 [e :U 298 ]
+[; ;ICH-LR-HR.C: 159: }
+[; ;ICH-LR-HR.C: 162: if (Key_LED.oneBit.PROpen){
+"162
+[e $ ! != -> . . _Key_LED 0 0 `i -> -> -> 0 `i `uc `i 299  ]
 {
-[; ;ICH-LR-HR.C: 166: LATA7 = 0;
+[; ;ICH-LR-HR.C: 163: LATA6 = 0;
+"163
+[e = _LATA6 -> -> 0 `i `b ]
+[; ;ICH-LR-HR.C: 164: if(!prOpenDelay){
+"164
+[e $ ! ! != _prOpenDelay -> -> 0 `i `ui 300  ]
+{
+[; ;ICH-LR-HR.C: 165: LATA7 = 1;
+"165
+[e = _LATA7 -> -> 1 `i `b ]
+[; ;ICH-LR-HR.C: 166: prCloseDelay = 10050/8;
 "166
-[e = _LATA7 -> -> 0 `i `b ]
+[e = _prCloseDelay -> / -> 10050 `i -> 8 `i `ui ]
 "167
 }
+[; ;ICH-LR-HR.C: 167: }else{
+[e $U 301  ]
+[e :U 300 ]
+{
+[; ;ICH-LR-HR.C: 168: LATA7 = 0;
+"168
+[e = _LATA7 -> -> 0 `i `b ]
+"169
+}
 [e :U 301 ]
-[; ;ICH-LR-HR.C: 167: }
-[; ;ICH-LR-HR.C: 170: if (Key_LED.oneBit.PRClose){
 "170
-[e $ ! != -> . . _Key_LED 0 1 `i -> -> -> 0 `i `uc `i 302  ]
+}
+[; ;ICH-LR-HR.C: 169: }
+[; ;ICH-LR-HR.C: 170: }else{
+[e $U 302  ]
+[e :U 299 ]
 {
 [; ;ICH-LR-HR.C: 171: LATA7 = 0;
 "171
 [e = _LATA7 -> -> 0 `i `b ]
-[; ;ICH-LR-HR.C: 172: if(!prCloseDelay){
 "172
-[e $ ! ! != _prCloseDelay -> -> 0 `i `ui 303  ]
-{
-[; ;ICH-LR-HR.C: 173: LATA6 = 1;
-"173
-[e = _LATA6 -> -> 1 `i `b ]
-[; ;ICH-LR-HR.C: 174: prOpenDelay = 10050/8;
-"174
-[e = _prOpenDelay -> / -> 10050 `i -> 8 `i `ui ]
-"175
 }
-[; ;ICH-LR-HR.C: 175: }else{
-[e $U 304  ]
-[e :U 303 ]
-{
-[; ;ICH-LR-HR.C: 176: LATA6 = 0;
-"176
-[e = _LATA6 -> -> 0 `i `b ]
-"177
-}
-[e :U 304 ]
-"178
-}
-[; ;ICH-LR-HR.C: 177: }
-[; ;ICH-LR-HR.C: 178: }
-[e $U 305  ]
-"179
 [e :U 302 ]
-[; ;ICH-LR-HR.C: 179: else{
+[; ;ICH-LR-HR.C: 172: }
+[; ;ICH-LR-HR.C: 175: if (Key_LED.oneBit.PRClose){
+"175
+[e $ ! != -> . . _Key_LED 0 1 `i -> -> -> 0 `i `uc `i 303  ]
 {
-[; ;ICH-LR-HR.C: 180: LATA6 = 0;
+[; ;ICH-LR-HR.C: 176: LATA7 = 0;
+"176
+[e = _LATA7 -> -> 0 `i `b ]
+[; ;ICH-LR-HR.C: 177: if(!prCloseDelay){
+"177
+[e $ ! ! != _prCloseDelay -> -> 0 `i `ui 304  ]
+{
+[; ;ICH-LR-HR.C: 178: LATA6 = 1;
+"178
+[e = _LATA6 -> -> 1 `i `b ]
+[; ;ICH-LR-HR.C: 179: prOpenDelay = 10050/8;
+"179
+[e = _prOpenDelay -> / -> 10050 `i -> 8 `i `ui ]
 "180
-[e = _LATA6 -> -> 0 `i `b ]
+}
+[; ;ICH-LR-HR.C: 180: }else{
+[e $U 305  ]
+[e :U 304 ]
+{
+[; ;ICH-LR-HR.C: 181: LATA6 = 0;
 "181
+[e = _LATA6 -> -> 0 `i `b ]
+"182
 }
 [e :U 305 ]
-[; ;ICH-LR-HR.C: 181: }
-[; ;ICH-LR-HR.C: 186: if (Key_LED.oneBit.Light){
+"183
+}
+[; ;ICH-LR-HR.C: 182: }
+[; ;ICH-LR-HR.C: 183: }
+[e $U 306  ]
+"184
+[e :U 303 ]
+[; ;ICH-LR-HR.C: 184: else{
+{
+[; ;ICH-LR-HR.C: 185: LATA6 = 0;
+"185
+[e = _LATA6 -> -> 0 `i `b ]
 "186
-[e $ ! != -> . . _Key_LED 0 4 `i -> -> -> 0 `i `uc `i 306  ]
-{
-[; ;ICH-LR-HR.C: 187: LATC2 = 1;
-"187
-[e = _LATC2 -> -> 1 `i `b ]
-"188
 }
-[; ;ICH-LR-HR.C: 188: }else{
-[e $U 307  ]
 [e :U 306 ]
+[; ;ICH-LR-HR.C: 186: }
+[; ;ICH-LR-HR.C: 191: if (Key_LED.oneBit.Light){
+"191
+[e $ ! != -> . . _Key_LED 0 4 `i -> -> -> 0 `i `uc `i 307  ]
 {
-[; ;ICH-LR-HR.C: 189: LATC2 = 0;
-"189
-[e = _LATC2 -> -> 0 `i `b ]
-"190
-}
-[e :U 307 ]
-[; ;ICH-LR-HR.C: 190: }
-[; ;ICH-LR-HR.C: 192: }
+[; ;ICH-LR-HR.C: 192: LATC2 = 1;
 "192
+[e = _LATC2 -> -> 1 `i `b ]
+"193
+}
+[; ;ICH-LR-HR.C: 193: }else{
+[e $U 308  ]
+[e :U 307 ]
+{
+[; ;ICH-LR-HR.C: 194: LATC2 = 0;
+"194
+[e = _LATC2 -> -> 0 `i `b ]
+"195
+}
+[e :U 308 ]
+[; ;ICH-LR-HR.C: 195: }
+[; ;ICH-LR-HR.C: 197: }
+"197
 [e :UE 292 ]
 }
-"194
+"199
 [v _IchLeds `(v  1 ef ]
 {
-[; ;ICH-LR-HR.C: 194: void IchLeds(void){
+[; ;ICH-LR-HR.C: 199: void IchLeds(void){
 [e :U _IchLeds ]
 [f ]
-[; ;ICH-LR-HR.C: 195: LedPwmCount++;
-"195
-[e ++ _LedPwmCount -> -> 1 `i `uc ]
-[; ;ICH-LR-HR.C: 196: if(LedPwmCount>=20){
-"196
-[e $ ! >= -> _LedPwmCount `i -> 20 `i 309  ]
-{
-[; ;ICH-LR-HR.C: 197: LedPwmCount=0;
-"197
-[e = _LedPwmCount -> -> 0 `i `uc ]
-"198
-}
-[e :U 309 ]
-[; ;ICH-LR-HR.C: 198: }
-[; ;ICH-LR-HR.C: 200: if ((LedPwmCount <= 1) && led_enable){
+[; ;ICH-LR-HR.C: 200: LedPwmCount++;
 "200
-[e $ ! && <= -> _LedPwmCount `i -> 1 `i _led_enable 310  ]
-{
-[; ;ICH-LR-HR.C: 201: LATB7 = LATC4 = LATC6 = LATC5 = LATC3 = 1;
+[e ++ _LedPwmCount -> -> 1 `i `uc ]
+[; ;ICH-LR-HR.C: 201: if(LedPwmCount>=20){
 "201
-[e = _LATB7 = _LATC4 = _LATC6 = _LATC5 = _LATC3 -> -> 1 `i `b ]
+[e $ ! >= -> _LedPwmCount `i -> 20 `i 310  ]
+{
+[; ;ICH-LR-HR.C: 202: LedPwmCount=0;
 "202
-}
-[; ;ICH-LR-HR.C: 202: }
-[e $U 311  ]
+[e = _LedPwmCount -> -> 0 `i `uc ]
 "203
-[e :U 310 ]
-[; ;ICH-LR-HR.C: 203: else{
-{
-[; ;ICH-LR-HR.C: 204: if (!Key_LED.oneBit.PROpen || !led_enable){
-"204
-[e $ ! || ! != -> . . _Key_LED 0 0 `i -> -> -> 0 `i `uc `i ! _led_enable 312  ]
-{
-[; ;ICH-LR-HR.C: 205: LATB7 = 0;
-"205
-[e = _LATB7 -> -> 0 `i `b ]
-"206
 }
-[e :U 312 ]
-[; ;ICH-LR-HR.C: 206: }
-[; ;ICH-LR-HR.C: 207: if (!Key_LED.oneBit.PRClose || !led_enable){
-"207
-[e $ ! || ! != -> . . _Key_LED 0 1 `i -> -> -> 0 `i `uc `i ! _led_enable 313  ]
+[e :U 310 ]
+[; ;ICH-LR-HR.C: 203: }
+[; ;ICH-LR-HR.C: 205: if ((LedPwmCount <= 1) && led_enable){
+"205
+[e $ ! && <= -> _LedPwmCount `i -> 1 `i _led_enable 311  ]
 {
-[; ;ICH-LR-HR.C: 208: LATC4 = 0;
+[; ;ICH-LR-HR.C: 206: LATB7 = LATC4 = LATC6 = LATC5 = LATC3 = 1;
+"206
+[e = _LATB7 = _LATC4 = _LATC6 = _LATC5 = _LATC3 -> -> 1 `i `b ]
+"207
+}
+[; ;ICH-LR-HR.C: 207: }
+[e $U 312  ]
 "208
-[e = _LATC4 -> -> 0 `i `b ]
+[e :U 311 ]
+[; ;ICH-LR-HR.C: 208: else{
+{
+[; ;ICH-LR-HR.C: 209: if (!Key_LED.oneBit.PROpen || !led_enable){
 "209
+[e $ ! || ! != -> . . _Key_LED 0 0 `i -> -> -> 0 `i `uc `i ! _led_enable 313  ]
+{
+[; ;ICH-LR-HR.C: 210: LATB7 = 0;
+"210
+[e = _LATB7 -> -> 0 `i `b ]
+"211
 }
 [e :U 313 ]
-[; ;ICH-LR-HR.C: 209: }
-[; ;ICH-LR-HR.C: 210: if (!Key_LED.oneBit.Heat || !led_enable || (LedPwmCount > heatLedIntensity)){
-"210
-[e $ ! || || ! != -> . . _Key_LED 0 2 `i -> -> -> 0 `i `uc `i ! _led_enable > -> _LedPwmCount `i -> _heatLedIntensity `i 314  ]
-{
-[; ;ICH-LR-HR.C: 211: LATC6 = 0;
-"211
-[e = _LATC6 -> -> 0 `i `b ]
+[; ;ICH-LR-HR.C: 211: }
+[; ;ICH-LR-HR.C: 212: if (!Key_LED.oneBit.PRClose || !led_enable){
 "212
+[e $ ! || ! != -> . . _Key_LED 0 1 `i -> -> -> 0 `i `uc `i ! _led_enable 314  ]
+{
+[; ;ICH-LR-HR.C: 213: LATC4 = 0;
+"213
+[e = _LATC4 -> -> 0 `i `b ]
+"214
 }
 [e :U 314 ]
-[; ;ICH-LR-HR.C: 212: }
-[; ;ICH-LR-HR.C: 213: if (!Key_LED.oneBit.Massage || !led_enable || (LedPwmCount > massageLedIntensity)){
-"213
-[e $ ! || || ! != -> . . _Key_LED 0 3 `i -> -> -> 0 `i `uc `i ! _led_enable > -> _LedPwmCount `i -> _massageLedIntensity `i 315  ]
-{
-[; ;ICH-LR-HR.C: 214: LATC5 = 0;
-"214
-[e = _LATC5 -> -> 0 `i `b ]
+[; ;ICH-LR-HR.C: 214: }
+[; ;ICH-LR-HR.C: 215: if (!Key_LED.oneBit.Heat || !led_enable || (LedPwmCount > heatLedIntensity)){
 "215
+[e $ ! || || ! != -> . . _Key_LED 0 2 `i -> -> -> 0 `i `uc `i ! _led_enable > -> _LedPwmCount `i -> _heatLedIntensity `i 315  ]
+{
+[; ;ICH-LR-HR.C: 216: LATC6 = 0;
+"216
+[e = _LATC6 -> -> 0 `i `b ]
+"217
 }
 [e :U 315 ]
-[; ;ICH-LR-HR.C: 215: }
-[; ;ICH-LR-HR.C: 216: if (!Key_LED.oneBit.Light || !led_enable){
-"216
-[e $ ! || ! != -> . . _Key_LED 0 4 `i -> -> -> 0 `i `uc `i ! _led_enable 316  ]
-{
-[; ;ICH-LR-HR.C: 217: LATC3 = 0;
-"217
-[e = _LATC3 -> -> 0 `i `b ]
+[; ;ICH-LR-HR.C: 217: }
+[; ;ICH-LR-HR.C: 218: if (!Key_LED.oneBit.Massage || !led_enable || (LedPwmCount > massageLedIntensity)){
 "218
+[e $ ! || || ! != -> . . _Key_LED 0 3 `i -> -> -> 0 `i `uc `i ! _led_enable > -> _LedPwmCount `i -> _massageLedIntensity `i 316  ]
+{
+[; ;ICH-LR-HR.C: 219: LATC5 = 0;
+"219
+[e = _LATC5 -> -> 0 `i `b ]
+"220
 }
 [e :U 316 ]
-"219
-}
-[e :U 311 ]
-[; ;ICH-LR-HR.C: 218: }
-[; ;ICH-LR-HR.C: 219: }
 [; ;ICH-LR-HR.C: 220: }
-"220
-[e :UE 308 ]
+[; ;ICH-LR-HR.C: 221: if (!Key_LED.oneBit.Light || !led_enable){
+"221
+[e $ ! || ! != -> . . _Key_LED 0 4 `i -> -> -> 0 `i `uc `i ! _led_enable 317  ]
+{
+[; ;ICH-LR-HR.C: 222: LATC3 = 0;
+"222
+[e = _LATC3 -> -> 0 `i `b ]
+"223
+}
+[e :U 317 ]
+"224
+}
+[e :U 312 ]
+[; ;ICH-LR-HR.C: 223: }
+[; ;ICH-LR-HR.C: 224: }
+[; ;ICH-LR-HR.C: 225: }
+"225
+[e :UE 309 ]
 }

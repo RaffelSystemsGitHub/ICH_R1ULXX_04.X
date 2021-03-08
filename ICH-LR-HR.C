@@ -86,8 +86,8 @@ void KeyExecute(void){
             if (Key_state.oneBit.Massage){
                 if (!flag_massage){
                     flag_massage = 1;
+                    massageTimer =  TWENTY_MINUTES;
                     Key_LED.oneBit.Massage = 1;
-                    massageTimer = TWENTY_MINUTES;
                     massageState++;
                     if (massageState >= 4){
                         massageState = 0;
@@ -132,9 +132,14 @@ void KeyExecute(void){
 
 void IchOutputs(void){			// Interrupt Service Routine.
 
-	outputPwmCount++;						//Increment PWM counter
-	if (outputPwmCount >= PWM_PERIOD){		//Check if the PWM counter equals or exceeds the PWM period
-		outputPwmCount = 0;                 //Reset the PWM counter
+    heatPwmCount++;
+    if(heatPwmCount >= PWM_PERIOD){
+        heatPwmCount = 0;
+    }
+    
+    outputPwmCount++;						//Increment PWM counter
+    if (outputPwmCount >= PWM_PERIOD){		//Check if the PWM counter equals or exceeds the PWM period
+        outputPwmCount = 0;                 //Reset the PWM counter
     }
 
 //////////////////////////////////////////////////////////
@@ -147,7 +152,7 @@ void IchOutputs(void){			// Interrupt Service Routine.
 
 ////////////////////////////////////////////////////////////
 //PWM Heat
-	if(Key_LED.oneBit.Heat && !(PROpen_Out || PRClose_Out) && (outputPwmCount <= heatIntensity)){
+	if(Key_LED.oneBit.Heat && !(PROpen_Out || PRClose_Out) && (heatPwmCount <= heatIntensity)){
 		Heat_Out = 1;
 	}else{
 		Heat_Out = 0;

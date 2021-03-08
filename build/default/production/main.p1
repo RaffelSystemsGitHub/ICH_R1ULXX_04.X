@@ -2298,44 +2298,46 @@ Version 3.2 HI-TECH Software Intermediate Code
 "66 ICH-LR-HR.h
 [v _heatState `uc  1 e ]
 "67 ICH-LR-HR.h
-[v _outputPwmCount `uc  1 e ]
+[v _heatPwmCount `ul  1 e ]
 "68 ICH-LR-HR.h
-[v _LedPwmCount `uc  1 e ]
+[v _outputPwmCount `uc  1 e ]
 "69 ICH-LR-HR.h
-[v _massageIntensity `uc  1 e ]
+[v _LedPwmCount `uc  1 e ]
 "70 ICH-LR-HR.h
-[v _heatIntensity `uc  1 e ]
+[v _massageIntensity `uc  1 e ]
 "71 ICH-LR-HR.h
-[v _massageLedIntensity `uc  1 e ]
+[v _heatIntensity `ul  1 e ]
 "72 ICH-LR-HR.h
+[v _massageLedIntensity `uc  1 e ]
+"73 ICH-LR-HR.h
 [v _heatLedIntensity `uc  1 e ]
-"74 ICH-LR-HR.h
-[v _massageTimer `ui  1 e ]
 "75 ICH-LR-HR.h
-[v _heatTimer `ui  1 e ]
+[v _massageTimer `ui  1 e ]
 "76 ICH-LR-HR.h
-[v _secondTimer `ui  1 e ]
+[v _heatTimer `ui  1 e ]
 "77 ICH-LR-HR.h
-[v _lightTimer `ui  1 e ]
+[v _secondTimer `ui  1 e ]
 "78 ICH-LR-HR.h
-[v _prOpenDelay `ui  1 e ]
+[v _lightTimer `ui  1 e ]
 "79 ICH-LR-HR.h
-[v _prCloseDelay `ui  1 e ]
+[v _prOpenDelay `ui  1 e ]
 "80 ICH-LR-HR.h
+[v _prCloseDelay `ui  1 e ]
+"81 ICH-LR-HR.h
 [v _ledTimer `ui  1 e ]
-"82 ICH-LR-HR.h
-[v _flag_pr_open `b  1 e ]
 "83 ICH-LR-HR.h
-[v _flag_pr_close `b  1 e ]
+[v _flag_pr_open `b  1 e ]
 "84 ICH-LR-HR.h
-[v _flag_massage `b  1 e ]
+[v _flag_pr_close `b  1 e ]
 "85 ICH-LR-HR.h
-[v _flag_heat `b  1 e ]
+[v _flag_massage `b  1 e ]
 "86 ICH-LR-HR.h
-[v _flag_light `b  1 e ]
+[v _flag_heat `b  1 e ]
 "87 ICH-LR-HR.h
-[v _led_enable `b  1 e ]
+[v _flag_light `b  1 e ]
 "88 ICH-LR-HR.h
+[v _led_enable `b  1 e ]
+"89 ICH-LR-HR.h
 [v _flag_led_enable `b  1 e ]
 [p mainexit ]
 "79 main.c
@@ -2356,11 +2358,11 @@ Version 3.2 HI-TECH Software Intermediate Code
 [v _mTouch_stateVars `S248  0 e ]
 [c E2834 0 1 2 .. ]
 [n E2834 mTouch_enum_ButtonState MTOUCH_INITIALIZING MTOUCH_RELEASED MTOUCH_PRESSED  ]
-"92 ICH-LR-HR.h
-[v _KeyExecute `(v  0 ef ]
-"94 ICH-LR-HR.h
-[v _IchLeds `(v  0 ef ]
 "93 ICH-LR-HR.h
+[v _KeyExecute `(v  0 ef ]
+"95 ICH-LR-HR.h
+[v _IchLeds `(v  0 ef ]
+"94 ICH-LR-HR.h
 [v _IchOutputs `(v  0 ef ]
 "418 mTouch.h
 [v _mTouch_Scan `(v  0 ef ]
@@ -4605,36 +4607,41 @@ Version 3.2 HI-TECH Software Intermediate Code
 ]
 [; ;ICH-LR-HR.h: 66: unsigned char heatState = 0;
 "67
+[i _heatPwmCount
+-> -> -> 0 `i `l `ul
+]
+[; ;ICH-LR-HR.h: 67: unsigned long heatPwmCount = 0;
+"68
 [i _outputPwmCount
 -> -> 0 `i `uc
 ]
-[; ;ICH-LR-HR.h: 67: unsigned char outputPwmCount = 0;
-"68
+[; ;ICH-LR-HR.h: 68: unsigned char outputPwmCount = 0;
+"69
 [i _LedPwmCount
 -> -> 0 `i `uc
 ]
-[; ;ICH-LR-HR.h: 68: unsigned char LedPwmCount = 0;
-[; ;ICH-LR-HR.h: 69: unsigned char massageIntensity;
-[; ;ICH-LR-HR.h: 70: unsigned char heatIntensity;
-[; ;ICH-LR-HR.h: 71: unsigned char massageLedIntensity;
-[; ;ICH-LR-HR.h: 72: unsigned char heatLedIntensity;
-[; ;ICH-LR-HR.h: 74: unsigned int massageTimer;
-[; ;ICH-LR-HR.h: 75: unsigned int heatTimer;
-[; ;ICH-LR-HR.h: 76: unsigned int secondTimer;
-[; ;ICH-LR-HR.h: 77: unsigned int lightTimer;
-[; ;ICH-LR-HR.h: 78: unsigned int prOpenDelay;
-[; ;ICH-LR-HR.h: 79: unsigned int prCloseDelay;
-[; ;ICH-LR-HR.h: 80: unsigned int ledTimer;
-[; ;ICH-LR-HR.h: 82: bit flag_pr_open;
-[; ;ICH-LR-HR.h: 83: bit flag_pr_close;
-[; ;ICH-LR-HR.h: 84: bit flag_massage;
-[; ;ICH-LR-HR.h: 85: bit flag_heat;
-[; ;ICH-LR-HR.h: 86: bit flag_light;
-[; ;ICH-LR-HR.h: 87: bit led_enable;
-[; ;ICH-LR-HR.h: 88: bit flag_led_enable;
-[; ;ICH-LR-HR.h: 92: void KeyExecute(void);
-[; ;ICH-LR-HR.h: 93: void IchOutputs(void);
-[; ;ICH-LR-HR.h: 94: void IchLeds(void);
+[; ;ICH-LR-HR.h: 69: unsigned char LedPwmCount = 0;
+[; ;ICH-LR-HR.h: 70: unsigned char massageIntensity;
+[; ;ICH-LR-HR.h: 71: unsigned long heatIntensity;
+[; ;ICH-LR-HR.h: 72: unsigned char massageLedIntensity;
+[; ;ICH-LR-HR.h: 73: unsigned char heatLedIntensity;
+[; ;ICH-LR-HR.h: 75: unsigned int massageTimer;
+[; ;ICH-LR-HR.h: 76: unsigned int heatTimer;
+[; ;ICH-LR-HR.h: 77: unsigned int secondTimer;
+[; ;ICH-LR-HR.h: 78: unsigned int lightTimer;
+[; ;ICH-LR-HR.h: 79: unsigned int prOpenDelay;
+[; ;ICH-LR-HR.h: 80: unsigned int prCloseDelay;
+[; ;ICH-LR-HR.h: 81: unsigned int ledTimer;
+[; ;ICH-LR-HR.h: 83: bit flag_pr_open;
+[; ;ICH-LR-HR.h: 84: bit flag_pr_close;
+[; ;ICH-LR-HR.h: 85: bit flag_massage;
+[; ;ICH-LR-HR.h: 86: bit flag_heat;
+[; ;ICH-LR-HR.h: 87: bit flag_light;
+[; ;ICH-LR-HR.h: 88: bit led_enable;
+[; ;ICH-LR-HR.h: 89: bit flag_led_enable;
+[; ;ICH-LR-HR.h: 93: void KeyExecute(void);
+[; ;ICH-LR-HR.h: 94: void IchOutputs(void);
+[; ;ICH-LR-HR.h: 95: void IchLeds(void);
 [; ;main.c: 79: void Example_System_Init (void);
 [; ;main.c: 80: void interrupt ISR (void);
 "84 main.c
@@ -4847,9 +4854,9 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e :UE 272 ]
 }
 "80
-[v F2898 `(v  1 tf ]
+[v F2899 `(v  1 tf ]
 "219
-[v _ISR `IF2898  1 e ]
+[v _ISR `IF2899  1 e ]
 {
 [; ;main.c: 218: void interrupt ISR(void)
 [; ;main.c: 219: {
@@ -4915,120 +4922,116 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e $U 279  ]
 [e :U 278 ]
 {
-[; ;main.c: 240: secondTimer = 10050;
-"240
-[e = _secondTimer -> -> 10050 `i `ui ]
-[; ;main.c: 242: if(ledTimer){
+[; ;main.c: 242: secondTimer = 10050;
 "242
+[e = _secondTimer -> -> 10050 `i `ui ]
+[; ;main.c: 244: if(ledTimer){
+"244
 [e $ ! != _ledTimer -> -> 0 `i `ui 280  ]
 {
-[; ;main.c: 243: ledTimer--;
-"243
+[; ;main.c: 245: ledTimer--;
+"245
 [e -- _ledTimer -> -> 1 `i `ui ]
-[; ;main.c: 244: if(!ledTimer){
-"244
+[; ;main.c: 246: if(!ledTimer){
+"246
 [e $ ! ! != _ledTimer -> -> 0 `i `ui 281  ]
 {
-[; ;main.c: 245: led_enable = 0;
-"245
+[; ;main.c: 247: led_enable = 0;
+"247
 [e = _led_enable -> -> 0 `i `b ]
-"246
+"248
 }
 [e :U 281 ]
-"247
+"249
 }
 [e :U 280 ]
-[; ;main.c: 246: }
-[; ;main.c: 247: }
-[; ;main.c: 249: if(heatTimer){
-"249
+[; ;main.c: 248: }
+[; ;main.c: 249: }
+[; ;main.c: 251: if(heatTimer){
+"251
 [e $ ! != _heatTimer -> -> 0 `i `ui 282  ]
 {
-[; ;main.c: 250: heatTimer--;
-"250
-[e -- _heatTimer -> -> 1 `i `ui ]
-[; ;main.c: 251: if(!heatTimer){
-"251
-[e $ ! ! != _heatTimer -> -> 0 `i `ui 283  ]
-{
-[; ;main.c: 252: heatState = Key_LED.oneBit.Heat = 0;
+[; ;main.c: 252: heatTimer--;
 "252
-[e = _heatState = . . _Key_LED 0 2 -> -> 0 `i `uc ]
+[e -- _heatTimer -> -> 1 `i `ui ]
 "253
 }
-[e :U 283 ]
-"254
-}
+[; ;main.c: 253: }else{
+[e $U 283  ]
 [e :U 282 ]
-[; ;main.c: 253: }
-[; ;main.c: 254: }
-[; ;main.c: 256: if(massageTimer){
-"256
+{
+[; ;main.c: 254: heatState = Key_LED.oneBit.Heat = 0;
+"254
+[e = _heatState = . . _Key_LED 0 2 -> -> 0 `i `uc ]
+"255
+}
+[e :U 283 ]
+[; ;main.c: 255: }
+[; ;main.c: 257: if(massageTimer){
+"257
 [e $ ! != _massageTimer -> -> 0 `i `ui 284  ]
 {
-[; ;main.c: 257: massageTimer--;
-"257
-[e -- _massageTimer -> -> 1 `i `ui ]
-[; ;main.c: 258: if(!massageTimer){
+[; ;main.c: 258: massageTimer--;
 "258
-[e $ ! ! != _massageTimer -> -> 0 `i `ui 285  ]
-{
-[; ;main.c: 259: massageState = Key_LED.oneBit.Massage = 0;
+[e -- _massageTimer -> -> 1 `i `ui ]
 "259
-[e = _massageState = . . _Key_LED 0 3 -> -> 0 `i `uc ]
-"260
 }
-[e :U 285 ]
+[; ;main.c: 259: }else{
+[e $U 285  ]
+[e :U 284 ]
+{
+[; ;main.c: 260: massageState = Key_LED.oneBit.Massage = 0;
+"260
+[e = _massageState = . . _Key_LED 0 3 -> -> 0 `i `uc ]
 "261
 }
-[e :U 284 ]
-[; ;main.c: 260: }
+[e :U 285 ]
 [; ;main.c: 261: }
-[; ;main.c: 263: if(lightTimer){
-"263
+[; ;main.c: 266: if(lightTimer){
+"266
 [e $ ! != _lightTimer -> -> 0 `i `ui 286  ]
 {
-[; ;main.c: 264: lightTimer--;
-"264
+[; ;main.c: 267: lightTimer--;
+"267
 [e -- _lightTimer -> -> 1 `i `ui ]
-"265
+"268
 }
-[; ;main.c: 265: }else{
+[; ;main.c: 268: }else{
 [e $U 287  ]
 [e :U 286 ]
 {
-[; ;main.c: 266: Key_LED.oneBit.Light = 0;
-"266
+[; ;main.c: 269: Key_LED.oneBit.Light = 0;
+"269
 [e = . . _Key_LED 0 4 -> -> 0 `i `uc ]
-"267
+"270
 }
 [e :U 287 ]
-"268
+"271
 }
 [e :U 279 ]
-[; ;main.c: 267: }
-[; ;main.c: 268: }
-[; ;main.c: 303: if ((TMR0IF && TMR0IE))
-"303
+[; ;main.c: 270: }
+[; ;main.c: 271: }
+[; ;main.c: 306: if ((TMR0IF && TMR0IE))
+"306
 [e $ ! && _TMR0IF _TMR0IE 288  ]
-[; ;main.c: 304: {
-"304
-{
-[; ;main.c: 305: mTouch_Scan();
-"305
-[e ( _mTouch_Scan ..  ]
+[; ;main.c: 307: {
 "307
+{
+[; ;main.c: 308: mTouch_Scan();
+"308
+[e ( _mTouch_Scan ..  ]
+"310
 }
 [e :U 288 ]
-[; ;main.c: 307: }
-[; ;main.c: 314: T0IF = 0;
-"314
+[; ;main.c: 310: }
+[; ;main.c: 317: T0IF = 0;
+"317
 [e = _T0IF -> -> 0 `i `b ]
-"315
+"318
 }
 [e :U 275 ]
-[; ;main.c: 315: }
-[; ;main.c: 317: }
-"317
+[; ;main.c: 318: }
+[; ;main.c: 320: }
+"320
 [e :UE 273 ]
 }
